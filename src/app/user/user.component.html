@@ -1,0 +1,50 @@
+<mat-card>
+<mat-form-field class="example-full-width">
+    <input matInput placeholder="Nama" [(ngModel)]="libraryDetails.Nama">
+</mat-form-field>
+<br>
+<mat-form-field class="example-full-width">
+    <input matInput placeholder="Email" [(ngModel)]="libraryDetails.Email">
+</mat-form-field>
+<br>
+<mat-form-field class="example-full-width">
+    <input matInput placeholder="No Id" [(ngModel)]="libraryDetails.NoId">
+</mat-form-field>
+<br>
+<mat-form-field class="example-full-width">
+    <input matInput placeholder="No Hp" [(ngModel)]="libraryDetails.NoHp">
+</mat-form-field>
+<button mat-raised-button color="primary" (click)="addData()">Submit</button>
+</mat-card>
+<mat-card>
+    <!--Table-->
+<mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <!-- <ng-container matColumnDef="position">
+      <mat-header-cell *matHeaderCellDef> No. </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.position}} </mat-cell>
+    </ng-container> -->
+
+    <ng-container matColumnDef="Nama">
+      <mat-header-cell *matHeaderCellDef> Nama </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.Nama}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="Email">
+      <mat-header-cell *matHeaderCellDef> Email </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.Email}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="NoId">
+      <mat-header-cell *matHeaderCellDef> No Id </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.NoId}} </mat-cell>
+    </ng-container>
+    
+    <ng-container matColumnDef="NoHp">
+      <mat-header-cell *matHeaderCellDef> No Hp </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.NoHp}} </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>
+</mat-card>
