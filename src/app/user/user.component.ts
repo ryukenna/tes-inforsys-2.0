@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { UserService } from '../service/user.service'
+import { user } from 'src/model/user.model';
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
@@ -8,20 +9,18 @@ import { UserService } from '../service/user.service'
 })
 export class UserComponent implements OnInit {
 
+  users: user[];
   dataSource: any;
-  libraryDetails = {
-    Nama: '',
-    Email: '',
-    NoId: '',
-    NoHp: '',
-  }
-
   displayedColumns = ['Nama', 'Email', 'NoId', 'NoHp']
 
   constructor(private user: UserService) { }
 
+  ngOnInit() {
+    this.getData();
+  }
+
   addData() {
-    this.user.addData(this.libraryDetails);
+    this.user.addData(this.users);
   }
 
   async getData() {
@@ -33,7 +32,4 @@ export class UserComponent implements OnInit {
     this.dataSource = x
   }
 
-  ngOnInit() {
-    this.getData();
-  }
 }
