@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-
+import { LoanService } from '../service/loan.service';
+import { AngularFirestore } from '@angular/fire/firestore';
+import { Moment } from 'moment';
 @Component({
   selector: 'app-loan',
   templateUrl: './loan.component.html',
@@ -7,16 +9,35 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoanComponent implements OnInit {
 
+  
+  dataSource: any;
   loanDetails = {
     NamaBuku: '',
-    Penulis: ''
+    Penulis: '',
+    TglPeminjaman: 'timestamp',
+    TglPengembalian: 'timestamp'
   }
 
-  displayedColumns = ['position', 'nama', 'penulis', 'tglpeminjaman', 'tglpengembalian']
+  
+  displayedColumns = ['NamaBuku', 'Penulis', 'TglPeminjaman', 'TglPengembalian']
 
-  constructor() { }
+  constructor(private loan: LoanService) { }
 
   ngOnInit() {
+    this.getLoan();
+  }
+
+  addLoan() {
+    this.loan.addLoan(this.loanDetails);
+  }
+
+  async getLoan() {
+    let x = await new Promise(res => {
+      this.loan.getLoan().subscribe(z => {
+        res(z)
+      });
+    })
+    this.dataSource = x
   }
 
 }

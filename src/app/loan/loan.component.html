@@ -8,48 +8,47 @@
       </mat-form-field>
       <mat-form-field color="accent" appearance="fill">
         <mat-label>Tanggal Peminjaman</mat-label>
-        <input matInput [matDatepicker]="picker1">
+        <input matInput [matDatepicker]="picker1" [(ngModel)]="loanDetails.TglPengembalian">
         <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
         <mat-datepicker #picker1></mat-datepicker>
       </mat-form-field>
       <br>
       <mat-form-field color="accent" appearance="fill">
         <mat-label>Tanggal Pengembalian</mat-label>
-        <input matInput [matDatepicker]="picker2">
+        <input matInput [matDatepicker]="picker2" [(ngModel)]="loanDetails.TglPeminjaman">
         <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
         <mat-datepicker #picker2></mat-datepicker>
       </mat-form-field>
       <br>
-      <button mat-raised-button color="primary">Submit</button>
+      <button mat-raised-button color="primary" (click)="addLoan()">Submit</button>
     </mat-card>
 
     <mat-card>
         <!--Table-->
         <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-          <!-- Position Column -->
-          <ng-container matColumnDef="position">
+          <!-- <ng-container matColumnDef="position">
             <mat-header-cell *matHeaderCellDef> No. </mat-header-cell>
             <mat-cell *matCellDef="let element"> {{element.position}} </mat-cell>
+          </ng-container> -->
+        
+          <ng-container matColumnDef="NamaBuku">
+            <mat-header-cell *matHeaderCellDef> Nama Buku </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.NamaBuku}} </mat-cell>
           </ng-container>
         
-          <ng-container matColumnDef="nama">
-            <mat-header-cell *matHeaderCellDef> Nama </mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{element.nama}} </mat-cell>
-          </ng-container>
-        
-          <ng-container matColumnDef="penulis">
+          <ng-container matColumnDef="Penulis">
             <mat-header-cell *matHeaderCellDef> Penulis </mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{element.penulis}} </mat-cell>
+            <mat-cell *matCellDef="let element"> {{element.Penulis}} </mat-cell>
           </ng-container>
         
-          <ng-container matColumnDef="tglpeminjaman">
+          <ng-container matColumnDef="TglPeminjaman">
             <mat-header-cell *matHeaderCellDef> Tanggal Peminjaman </mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{element.tglpeminjaman}} </mat-cell>
+            <mat-cell *matCellDef="let element"> {{element.TglPeminjaman}} </mat-cell>
           </ng-container>
           
-          <ng-container matColumnDef="tglpengembalian">
+          <ng-container matColumnDef="TglPengembalian">
             <mat-header-cell *matHeaderCellDef> Tanggal Pengembalian </mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{element.tglpengembalian}} </mat-cell>
+            <mat-cell *matCellDef="let element"> {{element.TglPengembalian}} </mat-cell>
           </ng-container>
         
           <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

@@ -33,7 +33,7 @@ import { DemoMaterialModule } from './material/material-module';
     BrowserAnimationsModule,
     DemoMaterialModule
   ],
-  providers: [UserService],
+  providers: [UserService, LoanService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

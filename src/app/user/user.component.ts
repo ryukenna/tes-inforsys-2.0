@@ -9,9 +9,9 @@ import { user } from 'src/model/user.model';
 })
 export class UserComponent implements OnInit {
 
-  users: user[];
+  users: user;
   dataSource: any;
-  displayedColumns = ['Nama', 'Email', 'NoId', 'NoHp']
+  displayedColumns = ['Nama', 'Email', 'NoId', 'NoHp', '#']
 
   constructor(private user: UserService) { }
 
@@ -19,8 +19,8 @@ export class UserComponent implements OnInit {
     this.getData();
   }
 
-  addData() {
-    this.user.addData(this.users);
+  addData(users: user) {
+    this.user.addData(users);
   }
 
   async getData() {
@@ -30,6 +30,10 @@ export class UserComponent implements OnInit {
       });
     })
     this.dataSource = x
+  }
+
+  deleteData(id: string) {
+    this.user.deleteData(id);
   }
 
 }

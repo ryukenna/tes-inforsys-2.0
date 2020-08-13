@@ -14,7 +14,7 @@
 <mat-form-field class="example-full-width">
     <input matInput placeholder="No Hp" [(ngModel)]="user.NoHp">
 </mat-form-field>
-<button mat-raised-button color="primary" (click)="addData()">Submit</button>
+<button mat-raised-button color="primary" (click)="addData(users)">Submit</button>
 </mat-card>
 <mat-card>
     <!--Table-->
@@ -42,6 +42,11 @@
     <ng-container matColumnDef="NoHp">
       <mat-header-cell *matHeaderCellDef> No Hp </mat-header-cell>
       <mat-cell *matCellDef="let element"> {{element.NoHp}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="#">
+      <mat-header-cell *matHeaderCellDef></mat-header-cell>
+      <mat-cell *matCellDef="let row"><button (click)="deleteData(row.id)" mat-button color="primary"><mat-icon>delete</mat-icon></button> </mat-cell>
     </ng-container>
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
